@@ -12,7 +12,9 @@ class SettingsActivity: AppCompatActivity() {
     lateinit var switchTheme: Switch
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        var user : String? = intent.getStringExtra("user")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         switchTheme = findViewById(R.id.switch1)

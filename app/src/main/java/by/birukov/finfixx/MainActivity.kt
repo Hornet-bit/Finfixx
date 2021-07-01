@@ -22,28 +22,27 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity(), CustomRecyclerAdapter.OnElementClick {
+class MainActivity : AppCompatActivity(), CustomRecyclerAdapter.OnItemClickListener {
 
     lateinit var textView: TextView
     lateinit var buttonLogin: MenuItem
     lateinit var buttonRegistration: MenuItem
     lateinit var view: WebView
     lateinit var recyclerView: RecyclerView
+    lateinit var recyclerMsg: TextView
     lateinit var newItem: RelativeLayout
     lateinit var fanfics : List<FanficModel>
-    lateinit var mElement : CustomRecyclerAdapter.OnElementClick
+    lateinit var adapter : CustomRecyclerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        var user : String? = intent.getStringExtra("user")
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.recyclerView)
-//        newItem = findViewById(R.id.addNewItem)
-//        newItem.setOnClickListener{
-//            Toast.makeText(this, "нажатие", Toast.LENGTH_SHORT).show()
-//        }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -71,10 +70,8 @@ class MainActivity : AppCompatActivity(), CustomRecyclerAdapter.OnElementClick {
                 }
                 fanfics = response.body()!!//todo переделать
                 if (fanfics != null) {
-                    recyclerView.adapter = CustomRecyclerAdapter(fanfics)
-                    print("I poluchil "+fanfics.get(0).description)
+                    recyclerView.adapter = CustomRecyclerAdapter(fanfics, this@MainActivity)
                 }
-            //                Log.d("First object - ", response.body()?.get(1))
             }
 
             override fun onFailure(call: Call<List<FanficModel>>, t: Throwable) {
@@ -90,13 +87,10 @@ class MainActivity : AppCompatActivity(), CustomRecyclerAdapter.OnElementClick {
 
     }
 
-    private fun fillList(): List<String> {
-        val data = mutableListOf<String>()
-        (0..30).forEach { i -> data.add("\$i element") }
-        return data
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var user : String? = intent.getStringExtra("user")
+        intent.putExtra("user",user)
         menuInflater.inflate(R.menu.general_menu, menu)
         return true
     }
@@ -120,6 +114,8 @@ class MainActivity : AppCompatActivity(), CustomRecyclerAdapter.OnElementClick {
         if (option == R.id.settings) {
 //            Toast.makeText(this, "registration", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, SettingsActivity::class.java)
+            var user : String? = intent.getStringExtra("user")
+            intent.putExtra("user",user)
             startActivity(intent)
             return true
         }
@@ -129,10 +125,10 @@ class MainActivity : AppCompatActivity(), CustomRecyclerAdapter.OnElementClick {
     }
 
     override fun onClick(position: Int) {
-        fanfics.get(position)
-        val intent = Intent(baseContext, TextActiviry::class.java)
-        startActivity(intent)
-        Toast.makeText(this, position, Toast.LENGTH_SHORT).show()
+        val position= fanfics[position]
+//        val intent = Intent(baseContext, TextActiviry::class.java)
+//        startActivity(intent)
+        Toast.makeText(this, position.toString(), Toast.LENGTH_SHORT).show()
     }
 
 

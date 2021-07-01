@@ -65,10 +65,11 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(baseContext, "login was successful ", Toast.LENGTH_SHORT).show()
                         val intent = Intent(baseContext, MainActivity::class.java)
                         intent.putExtra(Constants.HEADER_TOKEN,token)
+                        intent.putExtra("user",username.text.toString())
                         startActivity(intent)
                     } else {
                         Log.d("STATUS ERROR", response.code().toString() )
-                        Toast.makeText(baseContext, "Something's wrong ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "Something's wrong ", Toast.LENGTH_LONG).show()
                     }
                     Log.d("BODY_TOKEN", token.toString())
 
@@ -81,6 +82,10 @@ class LoginActivity : AppCompatActivity() {
 
             })
         }
+    }
+
+    fun printPoint(id : Int){
+        Toast.makeText(baseContext, id, Toast.LENGTH_LONG).show()
     }
 }
 
