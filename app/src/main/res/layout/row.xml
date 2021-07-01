@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/addNewItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:text="title"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:padding="5sp"
+            android:text="desk"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/tv_description"
+            android:padding="5sp"
+            android:text="desk"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_fandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/tv_date"
+            android:padding="5sp"
+            android:text="desk"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/static_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="author "
+            android:layout_below="@id/tv_fandom"
+            android:textSize="20sp"
+            android:padding="5sp"/>
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/tv_fandom"
+
+            android:layout_toEndOf="@id/static_text"
+            android:padding="5sp"
+            android:text="desk"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</LinearLayout>

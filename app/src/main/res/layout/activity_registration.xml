@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView_about_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="registration activity"/>
+
+    <EditText
+        android:id="@+id/et_reg_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+
+        android:padding="10dp"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/et_reg_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:inputType="text"
+
+        android:padding="10dp"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/et_reg_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="textPassword"
+
+        android:padding="10dp"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/b_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registration!"
+        android:onClick="registration"/>
+</LinearLayout>
+
+<!--todo поставить валидацию на емэил(поле тип)-->
